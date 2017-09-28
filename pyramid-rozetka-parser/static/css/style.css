@@ -1,0 +1,31 @@
+
+.main-wrpr {
+  background-color: yellow;
+}
+
+.card {
+  position: relative;
+  display: block;
+  margin-bottom: 0.75rem;
+  background-color: #fff;
+  border-radius: 0.125rem;
+  border: 1px solid rgba(0, 0, 0, 0.12); 
+}
+
+.card-block {
+  padding: 1.25rem; 
+}
+
+.card-block::after {
+    content: "";
+    display: table;
+    clear: both; 
+}
+
+.products, .items {
+	margin-top: 20px;
+}
+
+.logo {
+	margin: 20px 0;
+}
