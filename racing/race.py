@@ -16,7 +16,6 @@ def print_on(data, x, y):
 	}) + data[0:len(data) + cut_size]
 
 def start_car(spaces, top=0):
-	# os.system('clear')
 	x = spaces
 	car = [
 		"    ,---------------.",
@@ -46,5 +45,6 @@ def race(y):
 # for y in range(0, 12):
 # 	race(randrange(0, 12))
 
+os.system('clear')
 for car in range(0, rows / 9):
 	Thread(target=race, args=([car * 9])).start()
