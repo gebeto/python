@@ -1,40 +1,36 @@
-# import sublime
-# import sublime_plugin
+import sublime
+import sublime_plugin
+
+import re
 
 
+autocompletes = {
+	"Alert": [
+		["Prompt", "Prompt(${1:title}, ${2:message})"],
+		["Alert", "Alert(${1:title}, ${2:message})"],
+		["Confirm", "Confirm(${1:title}, ${2:message})"],
+	],
+	"SMAlert": [
+		["Prompt", "Prompt(${1:title}, ${2:message})"],
+		["Alert", "Alert(${1:title}, ${2:message})"],
+		["Confirm", "Confirm(${1:title}, ${2:message})"],
+	],
+}
 
-# def check_is_react_native_import(view):
-# 	cursor_pos = view.sel()[0].begin()
-# 	scope = view.extract_scope(cursor_pos)
-# 	react_native_import = view.find(r"from [\"']react-native[\"']", scope.end())
-# 	return react_native_import.a > 0
 
+class ReactNativeAutocomplete(sublime_plugin.EventListener):
+	def on_query_completions(self, view, prefix, locations):
+		sn = view.scope_name(locations[0])
 
-# class ReactNativeAutocomplete(sublime_plugin.EventListener):
-# 	def on_query_completions(self, view, prefix, locations):
-# 		line_region = view.full_line(locations[0])
-# 		line_text = view.substr(line_region).strip()
+		is_ok = False
+		# if "meta.block.tsx" in sn or "meta.block.jsx" in sn:
+		if "source.tsx" in sn or "source.jsx" in sn:
+			is_ok = True
+		if not is_ok:
+			return None
 
-# 		is_react_native_imports = check_is_react_native_import(view)
-# 		if is_react_native_imports:
-# 			return [
-# 				["View", "View"],
-# 				["Text", "Text"],
-# 				["OpacityHighlight", "OpacityHighlight"],
-# 			]
+		curr_pos = view.sel()[0].begin()
+		current_obj_region = view.word(curr_pos - 1)
+		current_obj = view.substr(current_obj_region)
 
-# 		print(line_text)
-# 		res = "<"
-# 		res += line_text
-# 		res += " ${1:P}${1/(P)|()|.*/(?1:\\/\>)$3(?2:\>\<\/"
-# 		res += line_text
-# 		res += "\>)/}"
-# 		return [
-# 			# [line_text, "<%s $1/>" % line_text]
-# 			# [line_text, "getElement${1/(T)|.*/(?1:s)/}By${1:T}${1/(T)|(I)|.*/(?1:agName)(?2:d)/}('$2')"]
-# 			# [line_text, "getElement${1/(P)|.*/(?1:s)/}By${1:P}${1/(P)|(C)|.*/(?1:\ \/\>)(?2:\>\<\/\>)/}('$2')"]
-# 			# [line_text, "getElement${1:P}${1/(P)|(C)|.*/(?1:\ \/\>)(?2:\>\<\/\>)/}('$2')"]
-# 			[line_text, res]
-# 		]
-
-# 		return False
+		return autocompletes.get(current_obj)
