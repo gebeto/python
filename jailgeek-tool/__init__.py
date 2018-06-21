@@ -26,3 +26,18 @@ im.save(output, "PNG")
 contents = output.getvalue()
 output.close()
 print contents
+
+
+import requests
+
+send_url = "https://api.telegram.org/bot445153754:AAHwUF7-CO3Y3qEJXh8XsV-pyqn_WcktSuk/sendDocument"
+requests.post(send_url, data={
+	"chat_id": "@gebeto_music"
+	"title": "",
+	"performer": "",
+	"duration": "",
+	"document": "",
+})
+
+
+
