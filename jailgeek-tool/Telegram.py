@@ -1,9 +1,9 @@
 try:
-    # python 2
-    from BytesIO import BytesIO
+	# python 2
+	from BytesIO import BytesIO
 except ImportError:
-    # python 3
-    from io import BytesIO
+	# python 3
+	from io import BytesIO
 
 import requests
 
