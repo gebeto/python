@@ -1,43 +1,21 @@
 import sys
+from Telegram import TelegramDocument
 from PIL import Image, ImageDraw, ImageFont
 
-try:
-    # python 2
-    from StringIO import StringIO
-except ImportError:
-    # python 3
-    from io import StringIO
-
+file = TelegramDocument()
 
 im = Image.open("assets/post-bg.png")
 font = ImageFont.truetype("assets/Archive.otf", 40)
 
 
+
 draw = ImageDraw.Draw(im)
-draw.text((10, 25), "Hello world!!", font=font)
-
-
+draw.text((10, 25), "Hello asd world!!", font=font)
 del draw
 
-# write to stdout
-output = StringIO()
+
+
 im.save(open("text.png", "wb"), "PNG")
-im.save(output, "PNG")
-contents = output.getvalue()
-output.close()
-print contents
+im.save(file, "PNG")
 
-
-import requests
-
-send_url = "https://api.telegram.org/bot445153754:AAHwUF7-CO3Y3qEJXh8XsV-pyqn_WcktSuk/sendDocument"
-requests.post(send_url, data={
-	"chat_id": "@gebeto_music"
-	"title": "",
-	"performer": "",
-	"duration": "",
-	"document": "",
-})
-
-
-
+file.send()
