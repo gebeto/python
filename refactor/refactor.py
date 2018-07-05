@@ -1,6 +1,26 @@
 import fnmatch
+import json
 import os
 import re
+
+
+class FileSearch(object):
+	def __init__(self, patterns, keys):
+		self.patterns = patterns
+		self.keys = keys
+
+	def search_in_file(self, file_content):
+		# file_content = file.read()
+		result = []
+		for key in self.keys:
+			result.extend(re.findall(key, file_content))
+		return result
+
+
+
+
+def load_config(file_path):
+	return json.load(open(file_path, "r"));
 
 
 def get_files(path):
@@ -11,61 +31,24 @@ def get_files(path):
 	return result
 
 
-def find_window_pattern(file_path, names):
-	file = open(file_path, "r").read()
-	res = re.findall(r"window\['\w+?'\]", file)
-	return [f for f in res if f in names]
-
-
-def replace_window_pattern(file_path, replaces):
-	file = open(file_path, "r").read()
-	rep = replaces[0]
-	for rep in replaces:
-		file = file.replace(rep[0],  "window._SG['{}']".format(rep[1]))
-	return file
-
-
-def scan_rename_list(file_path):
-	res = []
-	lines = open(file_path, "r").readlines()
-	i = 1
-	for line in lines:
-		f = re.findall(r"(window\[['|\"][\w\W]+?['|\"]\])[\w\W]+[//]?>>\s+(\w+)", line)
-		if f:
-			i += 1
-			res.append(f[0])
-	return res
-
-
-
-
-def statistic(match, rename_list):
-	founded = find_window_pattern(match, [r[0] for r in rename_list])
-	founded_count = {}
-	for f in founded:
-		if not founded_count.get(f):
-			founded_count[f] = 0
-		founded_count[f] += 1
-	replaces = [f for f in rename_list if f[0] in founded]
-	if founded:
-		print "Founded %s replaces in %s:" % (len(founded), match)
-		for r in replaces:
-			print "{:>5}. - {:<30}{:->4} window._SG['{}']".format(
-				founded_count[r[0]],
-				r[0],
-				"---->",
-				r[1],
-			)
-		print ""
-
-def refactor(match, rename_list):
+def create_refactored_file(file_path):
 	directory = os.path.dirname(match)
 	filename = os.path.basename(match)
 	new_file_directory = os.path.join(directory, "ref")
 	new_file = os.path.join(new_file_directory, filename)
+	if not os.path.exists(new_directory):
+		os.mkdir(new_directory)
+	return new_file
+
+
+def statistic(match, rename_list):
+	print match, rename_list
+
+def refactor(match, rename_list):
 	founded = find_window_pattern(match, [r[0] for r in rename_list])
 	replaces = [f for f in rename_list if f[0] in founded]
 	if founded:
+		new_file = create_refactored_file(match)
 		print "Founded %s replaces in %s:" % (len(founded), match)
 		print replaces
 		for r in replaces:
@@ -77,21 +60,19 @@ def refactor(match, rename_list):
 
 		print ""
 		new_file_content = replace_window_pattern(match, replaces)
-		if not os.path.exists(new_file_directory):
-			os.mkdir(new_file_directory)
 		open(new_file, "w").write(new_file_content)
 
 
 matches = []
-matches.extend(get_files('UI\\Scripts'))
-matches.extend(get_files('mobilejs\\Scripts'))
+matches.extend(get_files('test'))
 
-rename_list = scan_rename_list("./UI/Scripts/160-Settings.js")
-print {k: v for k, v in rename_list}
-exit();
+config = load_config("refactor_dict.json")
+print config
+
+
 
 for m in matches:
 	print "Processing \"%s\"" % m
-	# statistic(m, rename_list)
-	refactor(m, rename_list)
+	statistic(m, config)
+	# refactor(m, rename_list)
 	# exit()

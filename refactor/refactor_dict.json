@@ -1,9 +1,9 @@
 {
 	"old_patterns": [
-		"window['$1']",
-		"\b$1\b",
+		"window['$KEY$']",
+		"window.$KEY$"
 	],
-	"new_pattern": "windo w._SG['$1']",
+	"new_pattern": "window._SG['$KEY$']",
 	"keys": {
 		"g_lng": "pers_lng_n",
 		"g_lngdef": "gen_lng_n",
