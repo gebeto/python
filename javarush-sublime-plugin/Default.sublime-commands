@@ -1,0 +1,4 @@
+[
+    { "caption": "JavaRush: Взять задачу", "command": "get_task" },
+    { "caption": "JavaRush: Отправить задачу на проверку", "command": "send_task" }
+]

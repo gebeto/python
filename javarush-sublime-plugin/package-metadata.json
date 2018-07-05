@@ -1,0 +1,8 @@
+{
+  "dependencies": [],
+  "description": "Plugin for JavaRush",
+  "version": "1.0.0",
+  "url": "https://github.com/bboyheadman/JavaRush",
+  "platforms": ["*"],
+  "sublime_text": "*"
+}
