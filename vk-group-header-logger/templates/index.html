@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bot Doc</title>
+</head>
+<body>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>URL</th>
+				<th>Параметры</th>
+				<th>Описание</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>http://bboyheadman.pythonanywhere.com/join_leave_log?</td>
+				<td>
+					<p>
+						<b>confirmation_token</b> - confirmation token с настроек callback api
+					</p>
+					<p>
+						<b>access_token</b> - токен человека который будет писать личное сообщение с логом
+					</p>
+					<p>
+						<b>peer_id</b> - айди беседы либо человека куда будет писать лог
+					</p>
+					<p>
+						<b>group_dialog</b> - не писать если в <b>peer_id</b> указан айди человека, если указан id беседы указывайте значение <b>1</b>
+					</p>
+				</td>
+				<td>Логирование вход/выход с группы</td>
+			</tr>
+			<tr>
+				<td>http://bboyheadman.pythonanywhere.com/header?</td>
+				<td>
+					<p>
+						<b>confirmation_token</b> - confirmation token с настроек callback api
+					</p>
+					<p>
+						<b>access_token</b> - токен группы с доступом к фото
+					</p>
+				</td>
+				<td>Обновление шапки при каких либо действиях в группне</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
