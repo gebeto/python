@@ -1,0 +1,8 @@
+{
+  "dependencies": [],
+  "description": "Plugin for Howdy Ho",
+  "version": "1.0.0",
+  "url": "https://github.com/bboyheadman/howdy-ho-post-sublime",
+  "platforms": ["*"],
+  "sublime_text": "*"
+}
