@@ -29,7 +29,6 @@ def to_wav(p, frames):
 	wf.setframerate(RATE)
 	wf.writeframes(b''.join(frames))
 	wf.close()
-	st.seek(0)
 	return st
 
 def encode(s):
@@ -38,7 +37,7 @@ def encode(s):
 
 def send_message(message):
 	# print message.read()
-
+	message.seek(0)
 	res = requests.post(url, data={
 		"chat_id": '@sounds_great_gebeto',
 	}, files={
@@ -60,7 +59,7 @@ class SenderBot(object):
 		if self.queue:
 			p, frames = self.queue.pop()
 			send_message(to_wav(p, frames))
-			print time.time()
+			print "SEND", time.time()
 
 	def start(self):
 		self.thread.start()
@@ -72,6 +71,7 @@ class SenderBot(object):
 class ListenerBot(object):
 	def __init__(self):
 		super(ListenerBot, self).__init__()
+		self.last_record_time = 0
 		self.p = pyaudio.PyAudio()
 		self.sender = SenderBot()
 		self.sender.start()
@@ -88,15 +88,18 @@ class ListenerBot(object):
 
 	def callback(self, data, frame_count, time_info, status):
 		sound_level = sum(map(encode, data)) / len(data)
-
-		if sound_level > 100:
+		print 's -', sound_level
+		if sound_level > 90:
 			print "IS VOICE"
 			self.frames.append(data)
+			self.last_record_time = time.time()
 		else:
-			if self.frames:
+			if self.frames and len(self.frames) > 10 and self.last_record_time and time.time() - self.last_record_time > 2:
+				print "TIME -", self.last_record_time - time.time()
 				self.sender.add(self.p, self.frames)
 				self.frames = []
 			print "SILENCE"
+		print len(self.frames)
 
 		return (data, pyaudio.paContinue)
 
