@@ -49,6 +49,7 @@ class SenderBot(object):
 		super(SenderBot, self).__init__()
 		self.queue = []
 		self.thread = Thread(target=self.listen)
+		self.thread.setDaemon(1)
 
 	def listen(self):
 		while 1:
@@ -59,7 +60,7 @@ class SenderBot(object):
 		if self.queue:
 			p, frames = self.queue.pop()
 			send_message(to_wav(p, frames))
-			print "SEND", time.time()
+			# print "SEND", time.time()
 
 	def start(self):
 		self.thread.start()
@@ -71,7 +72,8 @@ class SenderBot(object):
 class ListenerBot(object):
 	def __init__(self):
 		super(ListenerBot, self).__init__()
-		self.last_record_time = 0
+		self.last_record_time = time.time()
+		self.recording = False
 		self.p = pyaudio.PyAudio()
 		self.sender = SenderBot()
 		self.sender.start()
@@ -88,18 +90,24 @@ class ListenerBot(object):
 
 	def callback(self, data, frame_count, time_info, status):
 		sound_level = sum(map(encode, data)) / len(data)
-		print 's -', sound_level
-		if sound_level > 90:
-			print "IS VOICE"
-			self.frames.append(data)
+		# print 's -', sound_level
+		if sound_level > 100:
+			# print "IS VOICE"
+			self.recording = True
 			self.last_record_time = time.time()
-		else:
-			if self.frames and len(self.frames) > 10 and self.last_record_time and time.time() - self.last_record_time > 2:
-				print "TIME -", self.last_record_time - time.time()
-				self.sender.add(self.p, self.frames)
-				self.frames = []
-			print "SILENCE"
-		print len(self.frames)
+
+		if self.recording:
+			self.frames.append(data)
+
+
+		if self.frames and len(self.frames) > 10 and self.last_record_time and time.time() - self.last_record_time > 1:
+			# print "TIME -", time.time()
+			self.sender.add(self.p, self.frames)
+			print "Add to queue"
+			self.frames = []
+			self.recording = False
+
+		# print "Frames -", len(self.frames), time.time() - self.last_record_time
 
 		return (data, pyaudio.paContinue)
 
@@ -111,6 +119,6 @@ class ListenerBot(object):
 
 lis = ListenerBot()
 
-raw_input("Press enter to stop")
+raw_input("Press enter to stop\n")
 
 del lis
