@@ -1,5 +1,5 @@
 ---
-description: Bot that check microphone and send audio message to Telegram
+description: Checking microphone and send audio message to Telegram
 ---
 
 # Silence bot
