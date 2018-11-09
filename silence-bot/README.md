@@ -1,4 +1,5 @@
 ---
+layout: default
 description: Checking microphone and send audio message to Telegram
 ---
 
