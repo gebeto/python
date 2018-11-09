@@ -4,7 +4,7 @@
 1. Go to [@BotFather](https://t.me/BotFather)
 2. Create bot
 3. Get token
-4. Go to api.telegram.org/bot`{TOKEN}`/getMe where {TOKEN} is your token
+4. Go to **https://api.telegram.org/bot`{TOKEN}`/getMe** where {TOKEN} is your token
 
 ## Python 2
 Requirements:
