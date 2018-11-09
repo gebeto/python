@@ -46,7 +46,8 @@ class SoundListener(object):
 			self.frames = []
 			self.recording = False
 
-		print "Frames -", len(self.frames), sound_level, time_now - self.last_record_time
+		if self.frames:
+			print "Frames -", len(self.frames), sound_level, time_now - self.last_record_time
 
 		return (data, pyaudio.paContinue)
 

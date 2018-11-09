@@ -16,8 +16,9 @@ import certifi
 class SendQueue(object):
 	_url = "https://api.telegram.org/bot{}/sendVoice"
 
-	def __init__(self, token, chat_id, with_text=False):
+	def __init__(self, token, chat_id, with_text=False, PROXY = {}):
 		super(SendQueue, self).__init__()
+		self.PROXY = PROXY
 		self.with_text = with_text
 		self.chat_id = chat_id
 		self.url = self._url.format(token)
@@ -77,5 +78,5 @@ class SendQueue(object):
 			"caption": caption
 		}, files={
 			"voice": msg_file
-		})
+		}, proxies=self.PROXY)
 		

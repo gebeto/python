@@ -7,6 +7,13 @@ config = RawConfigParser()
 config.read('config.ini')
 TOKEN = config.get('telegram', 'token')
 CHAT_ID = config.get('telegram', 'chat_id')
+PROXY = {
+	'https': config.get('telegram', 'proxy'),
+	'http': config.get('telegram', 'proxy'),
+}
+
+print PROXY
+
 
 
 p = pyaudio.PyAudio()
@@ -20,7 +27,7 @@ for i in range(0, numdevices):
 # input_device = raw_input("Select input device: ")
 
 
-queue = SendQueue(TOKEN, CHAT_ID)
+queue = SendQueue(TOKEN, CHAT_ID, PROXY = PROXY)
 lis = SoundListener(queue)
 
 raw_input("Press enter to stop\n")
