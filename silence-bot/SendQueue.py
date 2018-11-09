@@ -78,5 +78,15 @@ class SendQueue(object):
 			"caption": caption
 		}, files={
 			"voice": msg_file
-		}, proxies=self.PROXY)
+		}, proxies=self.PROXY, headers={
+			"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+			"Accept-Encoding": "gzip, deflate, br",
+			"Accept-Language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7,la;q=0.6,da;q=0.5,uk;q=0.4",
+			"Cache-Control": "max-age=0",
+			"Connection": "keep-alive",
+			# "Cookie": "_ga=GA1.2.811703182.1532686150; _gid=GA1.2.1399802875.1541779040",
+			"Host": "api.telegram.org",
+			"Upgrade-Insecure-Requests": "1",
+			"User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1",
+		})
 		

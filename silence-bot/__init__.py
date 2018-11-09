@@ -1,15 +1,16 @@
 import pyaudio
-from ConfigParser import RawConfigParser
+from ConfigParser import ConfigParser
 from SoundListener import SoundListener
 from SendQueue import SendQueue
 
-config = RawConfigParser()
+config = ConfigParser(allow_no_value=True)
 config.read('config.ini')
 TOKEN = config.get('telegram', 'token')
 CHAT_ID = config.get('telegram', 'chat_id')
+_PROXY = config.get('telegram', 'proxy') if 'proxy' in config.options('telegram') else None
 PROXY = {
-	'https': config.get('telegram', 'proxy'),
-	'http': config.get('telegram', 'proxy'),
+	'https': _PROXY,
+	'http': _PROXY,
 }
 
 print PROXY
