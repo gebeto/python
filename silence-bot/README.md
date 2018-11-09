@@ -1,7 +1,9 @@
 ---
 layout: default
-description: Checking microphone and send audio message to Telegram
+seo_tag:
+  description: Checking microphone and send audio message to Telegram
 ---
+
 
 # Silence bot
 
