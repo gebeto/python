@@ -1,3 +1,8 @@
+---
+layout: default
+title: Hell worldd
+---
+
 # Silence bot
 
 ## Get started
