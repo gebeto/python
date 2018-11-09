@@ -10,8 +10,10 @@ body {
 .wrapper {
   margin: 0 auto;
   box-sizing: border-box;
+  width: 100%
   
   header {
+    float: none;
     margin:  0;
     width:  100%;
     position: static;
@@ -27,8 +29,9 @@ body {
   }
   
   section {
-    margin: 0 auto;
-    width: 100%;
+    float: none;
+    margin: 40px auto;
+    width: 960px;
     box-sizing: border-box;
     
     @media print, screen and (max-width: 720px) {
