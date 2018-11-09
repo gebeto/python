@@ -1,3 +1,7 @@
+---
+description: Bot that check microphone and send audio message to Telegram
+---
+
 # Silence bot
 
 ## Get started
