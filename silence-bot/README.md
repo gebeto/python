@@ -1,8 +1,3 @@
----
-layout: default
----
-
-
 # Silence bot
 
 ## Get started
