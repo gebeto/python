@@ -8,12 +8,17 @@ from globals import CHANNELS, FORMAT, RATE
 
 from datetime import datetime
 
+import speech_recognition as sr
+
+import certifi
+
 
 class SendQueue(object):
 	_url = "https://api.telegram.org/bot{}/sendVoice"
 
-	def __init__(self, token, chat_id):
+	def __init__(self, token, chat_id, with_text=False):
 		super(SendQueue, self).__init__()
+		self.with_text = with_text
 		self.chat_id = chat_id
 		self.url = self._url.format(token)
 		self.queue = []
@@ -47,14 +52,29 @@ class SendQueue(object):
 	def add(self, p, item):
 		self.queue.append((p, item))
 
+	def audio_caption(self, source):
+		source.seek(0)
+		if not self.with_text: return None
+		r = sr.Recognizer()
+		with sr.AudioFile(message) as source:
+			audio = r.record(source)
+		try:
+			# command = r.recognize_google(audio, language='uk-UA')
+			command = r.recognize_google(audio, language='ru-RU')
+			return command
+		except:
+			pass
+		return None
+
 	def _send_message(self, message):
+		now = datetime.now()
+		caption = self.audio_caption(message) or "Recorded:\n{}".format(now.strftime("%Y-%m-%d\n%H:%M:%S"))
 		message.seek(0)
 		msg_file = message.read()
-		now = datetime.now()
-		res = requests.post(self.url, data={
+		res = requests.post(self.url, verify=certifi.where(), data={
 			"chat_id": self.chat_id,
 			"duration": len(msg_file) / 120000,
-			"caption": "Recorded:\n{}".format(now.strftime("%Y-%m-%d\n%H:%M:%S"))
+			"caption": caption
 		}, files={
 			"voice": msg_file
 		})
