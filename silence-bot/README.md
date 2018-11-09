@@ -8,14 +8,15 @@
 5. Add your bot as admin in `chanel` or as member in `dialog`
 
 ## Python 2
-Requirements:
+
+### Requirements
 ```shellsession
 $ pip install pyaudio
 $ pip install requests
 $ pip install requests[socks]
 ```
 
-Run:
+### Run
 ```shellsession
 $ python __init__.py
 ```
