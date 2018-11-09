@@ -1,9 +1,3 @@
----
-layout: default
-seo_tag:
-  title: Hell worldd
----
-
 # Silence bot
 
 ## Get started
