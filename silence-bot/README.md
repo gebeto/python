@@ -12,6 +12,7 @@ Requirements:
 ```shellsession
 $ pip install pyaudio
 $ pip install requests
+$ pip install requests[socks]
 ```
 
 Run:
