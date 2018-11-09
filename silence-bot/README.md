@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Hell worldd
+seo_tag:
+  title: Hell worldd
 ---
 
 # Silence bot
