@@ -14,6 +14,7 @@
 $ pip install pyaudio
 $ pip install requests
 $ pip install requests[socks]
+$ pip install SpeechRecognition
 ```
 
 ### Run

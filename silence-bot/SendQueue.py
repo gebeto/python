@@ -1,16 +1,15 @@
+# encoding=utf-8
+
 from StringIO import StringIO
-from threading import Thread
-import time
-import wave
-import requests
-
-from globals import CHANNELS, FORMAT, RATE
-
 from datetime import datetime
+from threading import Thread
+import requests
+import time
 
 import speech_recognition as sr
+import wave
 
-import certifi
+from globals import CHANNELS, FORMAT, RATE
 
 
 class SendQueue(object):
@@ -54,13 +53,12 @@ class SendQueue(object):
 		self.queue.append((p, item))
 
 	def audio_caption(self, source):
-		source.seek(0)
 		if not self.with_text: return None
+		source.seek(0)
 		r = sr.Recognizer()
 		with sr.AudioFile(message) as source:
 			audio = r.record(source)
 		try:
-			# command = r.recognize_google(audio, language='uk-UA')
 			command = r.recognize_google(audio, language='ru-RU')
 			return command
 		except:
@@ -69,10 +67,10 @@ class SendQueue(object):
 
 	def _send_message(self, message):
 		now = datetime.now()
-		caption = self.audio_caption(message) or "Recorded:\n{}".format(now.strftime("%Y-%m-%d\n%H:%M:%S"))
+		caption = self.audio_caption(message) or "Записано:\n{}".format(now.strftime("%Y-%m-%d\n%H:%M:%S"))
 		message.seek(0)
 		msg_file = message.read()
-		res = requests.post(self.url, verify=certifi.where(), data={
+		res = requests.post(self.url, verify=False, data={
 			"chat_id": self.chat_id,
 			"duration": len(msg_file) / 120000,
 			"caption": caption
@@ -84,7 +82,6 @@ class SendQueue(object):
 			"Accept-Language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7,la;q=0.6,da;q=0.5,uk;q=0.4",
 			"Cache-Control": "max-age=0",
 			"Connection": "keep-alive",
-			# "Cookie": "_ga=GA1.2.811703182.1532686150; _gid=GA1.2.1399802875.1541779040",
 			"Host": "api.telegram.org",
 			"Upgrade-Insecure-Requests": "1",
 			"User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1",
