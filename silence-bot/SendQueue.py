@@ -13,7 +13,9 @@ from globals import CHANNELS, FORMAT, RATE
 
 
 class SendQueue(object):
-	_url = "https://api.telegram.org/bot{}/sendVoice"
+	# _url = "https://api.telegram.org/bot{}/sendVoice"
+	# _url = "https://149.154.167.220:443/bot{}/sendVoice"
+	_url = "https://149.154.167.220:443/bot{}/sendVoice"
 
 	def __init__(self, token, chat_id, with_text=False, PROXY = {}):
 		super(SendQueue, self).__init__()
@@ -86,4 +88,5 @@ class SendQueue(object):
 			"Upgrade-Insecure-Requests": "1",
 			"User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1",
 		})
+		print res.content
 		
