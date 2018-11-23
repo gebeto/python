@@ -45,7 +45,10 @@ class SendQueue(object):
 	def _listen(self):
 		if self.queue:
 			p, frames = self.queue.pop()
-			self._send_message(self._to_wav(p, frames))
+			try:
+				self._send_message(self._to_wav(p, frames))
+			except:
+				self.add(p, frames)
 			print "SEND --", time.time()
 
 	def start(self):
