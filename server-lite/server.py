@@ -1,5 +1,7 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import json
+import os
+import re
 
 PORT_NUMBER = 8080
 
@@ -35,6 +37,7 @@ class route(object):
 		def handler(request, query):
 			request.send_response(200)
 			request.send_header('Content-type', self.content_type)
+			request.send_header('Access-Control-Allow-Origin', '*')
 			request.end_headers()
 			preparer = content_types[self.content_type]
 			return preparer(route_handler(prepare_query(query)))
@@ -51,6 +54,7 @@ class ServerHandler(BaseHTTPRequestHandler):
 		if route == None:
 			self.send_response(404)
 			self.send_header('Content-type','text/html')
+			request.send_header('Access-Control-Allow-Origin', '*')
 			self.end_headers()
 			self.wfile.write("404")
 		else:
