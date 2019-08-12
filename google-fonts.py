@@ -12,7 +12,7 @@ except:
 """)
 	exit(0)
 
-url = "https://fonts.googleapis.com/css?family={}".format(font)
+url = "https://fonts.googleapis.com/css?family={}&display=swap".format(font)
 # response = str(urllib.request.urlopen(url).read())
 request = urllib.request.Request(url, headers={
 	"user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36",
