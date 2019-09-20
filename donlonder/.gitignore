@@ -1,0 +1,6 @@
+.DS_Store
+__python_cache__
+*.pyc
+*.ipsw
+data/
+
