@@ -2,7 +2,7 @@ nowatermark==0.0.1
 numpy==1.17.0
 opencv-python==4.1.0.25
 pandas==0.25.0
-Pillow==6.1.0
+Pillow==6.2.0
 python-dateutil==2.8.0
 pytz==2019.1
 six==1.12.0
