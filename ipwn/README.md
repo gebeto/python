@@ -2,3 +2,7 @@
 
 Sources:
 https://github.com/axi0mX/ipwndfu/blob/master/checkm8.py
+
+
+USB Info:
+https://radiohlam.ru/usb4/
