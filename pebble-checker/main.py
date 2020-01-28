@@ -57,11 +57,17 @@ def parse_item(item):
 def parse_items(html):
     soup = BeautifulSoup(response, "lxml")
     wrapper = soup.find("ul", {"class": "srp-results"})
-    items = wrapper.find_all("li", {"class": "s-item"})
+    # items = wrapper.find_all("li", {"class": "s-item"})
+    items = [i for i in wrapper.children][1:]
 
     jsons = []
 
     for item in items:
+        if item.name == "div":
+            if "srp-river-answer" in item["class"]:
+                break
+            else:
+                continue
         jsons.append(parse_item(item))
 
     return jsons
@@ -69,7 +75,6 @@ def parse_items(html):
 
 def get_item_name(item):
     data = str(item)
-    # data = "|".join([str(v) for k, v in item.items()])
     filename = hashlib.md5(data.encode()).hexdigest()
     return f"{dir_path}/data/{filename}.json"
 
@@ -115,6 +120,7 @@ def upload_to_telegram(item):
 url = "https://www.ebay.com/sch/i.html?_nkw=pebble+round&rt=nc&LH_BIN=1"
 
 response = get(url).content
+# response = cached_get(url)
 items = parse_items(response)
 check_for_new_items(items, upload_to_telegram)
 save_all_items(items)
