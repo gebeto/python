@@ -94,8 +94,7 @@ def upload_to_telegram(item):
     resp = post(bot_url, json={
         "chat_id": "@pebble_search",
         "photo": item["image"],
-        "caption": f"""*New Pebble Round!*
-{item["title"]}
+        "caption": f"""{item["title"]}
 
 *Link*: [ebay.com]({item["url"]})
 *Price*: *{item["price"]}*
