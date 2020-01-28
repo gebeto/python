@@ -108,7 +108,7 @@ def upload_to_telegram(item):
     })
 
     print(resp, resp.content)
-    time.sleep(1)
+    time.sleep(3)
 
 
 # url = "https://www.ebay.com/sch/i.html?_nkw=pebble+round"
