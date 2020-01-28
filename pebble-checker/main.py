@@ -96,7 +96,6 @@ def upload_to_telegram(item):
     bot_url = f"https://api.telegram.org/bot{token}/sendPhoto"
 
     resp = post(bot_url, json={
-        # "chat_id": 179933256,
         "chat_id": "@pebble_search",
         "photo": item["image"],
         "caption": f"""*New Pebble Round!*
@@ -116,8 +115,6 @@ def upload_to_telegram(item):
 url = "https://www.ebay.com/sch/i.html?_nkw=pebble+round&rt=nc&LH_BIN=1"
 
 response = get(url).content
-# response = cached_get(url)
 items = parse_items(response)
 check_for_new_items(items, upload_to_telegram)
-# check_for_new_items(items, print)
 save_all_items(items)
