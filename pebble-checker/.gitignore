@@ -1,3 +1,4 @@
 *.html
 pebble.json
 data/*.json
+token

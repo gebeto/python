@@ -1,7 +1,17 @@
-import requests
-import json
+from requests import get, post
 from bs4 import BeautifulSoup
 import hashlib
+import json
+import time
+import os
+import re
+
+
+def find_price(price):
+    p = re.findall(r"[\d.]+", price)
+    if p:
+        return float(p[0])
+    return price
 
 
 def cached_get(url):
@@ -11,7 +21,7 @@ def cached_get(url):
         file_data = open(file_path, "r").read()
     except FileNotFoundError:
         with open(file_path, "w") as file:
-            file_data = requests.get(url).text
+            file_data = get(url).text
             file.write(file_data)
     return file_data
 
@@ -25,11 +35,18 @@ def parse_item(item):
 
     price = [i for i in item.find("span", {"class": "s-item__price"}).children]
     if len(price) > 1:
-        result["price_range_raw"] = [price[0], price[-1]]
-        result["price_range"] = result["price_range_raw"]
+        result["price"] = f"{price[0]} - {price[-1]}"
     else:
-        result["price_raw"] = price[0]
-        result["price"] = result["price_raw"]
+        result["price"] = f"{price[0]}"
+
+    # if len(price) > 1:
+    #     price_start = price[0]
+    #     price_end = price[-1]
+    #     result["price_range_raw"] = [price_start, price_end]
+    #     result["price_range"] = [find_price(price_start), find_price(price_end)]
+    # else:
+    #     result["price_raw"] = price[0]
+    #     result["price"] = find_price(price[0])
 
     return result
 
@@ -47,10 +64,58 @@ def parse_items(html):
     return jsons
 
 
+def get_item_name(item):
+    data = str(item)
+    # data = "|".join([str(v) for k, v in item.items()])
+    filename = hashlib.md5(data.encode()).hexdigest()
+    return f"data/{filename}.json"
+
+
+def save_item(item):
+    filename = get_item_name(item)
+    json.dump(item, open(filename, "w"), indent=4)
+
+
+def save_all_items(items):
+    for item in items:
+        save_item(item)
+
+
+def check_for_new_items(items, on_new_found):
+    for item in items:
+        name = get_item_name(item)
+        if not os.path.exists(name):
+            on_new_found(item)
+
+
+def upload_to_telegram(item):
+    token = open("token", "r").read()
+    bot_url = f"https://api.telegram.org/bot{token}/sendPhoto"
+
+    resp = post(bot_url, json={
+        # "chat_id": 179933256,
+        "chat_id": "@pebble_search",
+        "photo": item["image"],
+        "caption": f"""*New Pebble Round!*
+{item["title"]}
+
+*Link*: [ebay.com]({item["url"]})
+*Price*: *{item["price"]}*
+        """,
+        "parse_mode": "markdown"
+    })
+
+    print(resp, resp.content)
+    time.sleep(1)
+
+
 # url = "https://www.ebay.com/sch/i.html?_nkw=pebble+round"
 url = "https://www.ebay.com/sch/i.html?_nkw=pebble+round&rt=nc&LH_BIN=1"
 
+# response = get(url)
 response = cached_get(url)
 items = parse_items(response)
+check_for_new_items(items, upload_to_telegram)
+save_all_items(items)
 
-json.dump(items, open("pebble.json", "w"), indent=4)
+# upload_to_telegram(json.load(open("data/9fa129e2aedace0f05c2c66bac316908.json")))
