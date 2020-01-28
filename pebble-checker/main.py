@@ -7,6 +7,9 @@ import os
 import re
 
 
+abs_path = os.path.abspath(__file__)
+dir_path, filename = os.path.split(abs_path)
+
 def find_price(price):
     p = re.findall(r"[\d.]+", price)
     if p:
@@ -68,7 +71,7 @@ def get_item_name(item):
     data = str(item)
     # data = "|".join([str(v) for k, v in item.items()])
     filename = hashlib.md5(data.encode()).hexdigest()
-    return f"data/{filename}.json"
+    return f"{dir_path}/data/{filename}.json"
 
 
 def save_item(item):
@@ -112,10 +115,9 @@ def upload_to_telegram(item):
 # url = "https://www.ebay.com/sch/i.html?_nkw=pebble+round"
 url = "https://www.ebay.com/sch/i.html?_nkw=pebble+round&rt=nc&LH_BIN=1"
 
-# response = get(url)
-response = cached_get(url)
+response = get(url).content
+# response = cached_get(url)
 items = parse_items(response)
 check_for_new_items(items, upload_to_telegram)
+# check_for_new_items(items, print)
 save_all_items(items)
-
-# upload_to_telegram(json.load(open("data/9fa129e2aedace0f05c2c66bac316908.json")))
