@@ -92,7 +92,7 @@ def check_for_new_items(items, on_new_found):
 
 
 def upload_to_telegram(item):
-    token = open("token", "r").read()
+    token = open("token", "r").read().strip()
     bot_url = f"https://api.telegram.org/bot{token}/sendPhoto"
 
     resp = post(bot_url, json={
