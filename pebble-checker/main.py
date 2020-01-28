@@ -79,21 +79,12 @@ def get_item_name(item):
     return f"{dir_path}/data/{filename}.json"
 
 
-def save_item(item):
-    filename = get_item_name(item)
-    json.dump(item, open(filename, "w"), indent=4)
-
-
-def save_all_items(items):
+def save_all_items(items, on_new_found):
     for item in items:
-        save_item(item)
-
-
-def check_for_new_items(items, on_new_found):
-    for item in items:
-        name = get_item_name(item)
-        if not os.path.exists(name):
+        filename = get_item_name(item)
+        if not os.path.exists(filename):
             on_new_found(item)
+        json.dump(item, open(filename, "w"), indent=4)
 
 
 def upload_to_telegram(item):
@@ -122,5 +113,4 @@ url = "https://www.ebay.com/sch/i.html?_nkw=pebble+round&rt=nc&LH_BIN=1"
 response = get(url).content
 # response = cached_get(url)
 items = parse_items(response)
-check_for_new_items(items, upload_to_telegram)
-save_all_items(items)
+save_all_items(items, upload_to_telegram)
