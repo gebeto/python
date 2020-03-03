@@ -2,6 +2,7 @@ from sqlalchemy import Column, create_engine, REAL, BLOB, VARCHAR, INTEGER
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
+import json
 import os
 
 url_root = os.popen("getconf DARWIN_USER_DIR").read().strip()
@@ -16,7 +17,7 @@ Base = declarative_base()
 
 
 def as_dict(item):
-	return {k: v for k, v in item.__dict__.items() if k[0].isalpha() }
+	return {k: v for k, v in item.__dict__.items() if k[0].isalpha() and type(v) != bytes}
 
 
 setattr(Base, "as_dict", as_dict)
@@ -118,12 +119,3 @@ class AppSource(Base):
 	def __repr__(source):
 		return f"AppSource({source.rowid}, '{source.uuid}', ...)"
 
-
-apps = session.query(App).all()
-# print(apps)
-# print(apps[0].as_dict())
-
-
-# images = session.query(ImageCache).all()
-# print(images[0].as_dict())
-# open("test.png", "wb").write(images[0].image_data)

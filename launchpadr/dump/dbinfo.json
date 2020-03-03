@@ -1,0 +1,54 @@
+[
+    {
+        "value": "0",
+        "key": "ignore_items_update_triggers"
+    },
+    {
+        "value": "1",
+        "key": "launchpad_root"
+    },
+    {
+        "value": "5",
+        "key": "launchpad_version_root"
+    },
+    {
+        "value": "6",
+        "key": "compatibleVersion"
+    },
+    {
+        "value": "13",
+        "key": "version"
+    },
+    {
+        "value": "19A583",
+        "key": "build"
+    },
+    {
+        "value": "en-UA",
+        "key": "localization"
+    },
+    {
+        "value": "UA",
+        "key": "region_code"
+    },
+    {
+        "value": "2",
+        "key": "curateListVersionLP"
+    },
+    {
+        "value": "3",
+        "key": "ignoreListVersionLP"
+    },
+    {
+        "value": "1",
+        "key": "curateListVersionDB"
+    },
+    {
+        "value": "1",
+        "key": "UpdatedForROSP"
+    },
+    {
+        "value": "1",
+        "key": "UpdatedForiTunesSplit"
+    }
+]
