@@ -1,0 +1,762 @@
+[
+    {
+        "title": "Siri",
+        "item_id": 7,
+        "storeid": null,
+        "moddate": 588386112.0,
+        "bundleid": "com.apple.siri.launcher",
+        "category_id": 1
+    },
+    {
+        "title": "Safari",
+        "item_id": 8,
+        "storeid": null,
+        "moddate": 591333272.0,
+        "bundleid": "com.apple.Safari",
+        "category_id": 2
+    },
+    {
+        "title": "Music",
+        "item_id": 9,
+        "storeid": null,
+        "moddate": 591420578.0,
+        "bundleid": "com.apple.Music",
+        "category_id": 3
+    },
+    {
+        "title": "Find My",
+        "item_id": 10,
+        "storeid": null,
+        "moddate": 589530156.0,
+        "bundleid": "com.apple.findmy",
+        "category_id": null
+    },
+    {
+        "title": "QuickTime Player",
+        "item_id": 11,
+        "storeid": null,
+        "moddate": 590301759.0,
+        "bundleid": "com.apple.QuickTimePlayerX",
+        "category_id": 4
+    },
+    {
+        "title": "Chess",
+        "item_id": 12,
+        "storeid": null,
+        "moddate": 588396223.0,
+        "bundleid": "com.apple.Chess",
+        "category_id": 5
+    },
+    {
+        "title": "Photo Booth",
+        "item_id": 13,
+        "storeid": null,
+        "moddate": 588395166.0,
+        "bundleid": "com.apple.PhotoBooth",
+        "category_id": 6
+    },
+    {
+        "title": "Books",
+        "item_id": 14,
+        "storeid": null,
+        "moddate": 589877806.0,
+        "bundleid": "com.apple.iBooksX",
+        "category_id": 7
+    },
+    {
+        "title": "Notes",
+        "item_id": 15,
+        "storeid": null,
+        "moddate": 588393604.0,
+        "bundleid": "com.apple.Notes",
+        "category_id": 2
+    },
+    {
+        "title": "Image Capture",
+        "item_id": 16,
+        "storeid": null,
+        "moddate": 588392006.0,
+        "bundleid": "com.apple.Image_Capture",
+        "category_id": 1
+    },
+    {
+        "title": "Home",
+        "item_id": 17,
+        "storeid": null,
+        "moddate": 589173891.0,
+        "bundleid": "com.apple.Home",
+        "category_id": null
+    },
+    {
+        "title": "Preview",
+        "item_id": 18,
+        "storeid": null,
+        "moddate": 588394525.0,
+        "bundleid": "com.apple.Preview",
+        "category_id": 2
+    },
+    {
+        "title": "TextEdit",
+        "item_id": 19,
+        "storeid": null,
+        "moddate": 588386577.0,
+        "bundleid": "com.apple.TextEdit",
+        "category_id": 2
+    },
+    {
+        "title": "Podcasts",
+        "item_id": 20,
+        "storeid": null,
+        "moddate": 591167074.0,
+        "bundleid": "com.apple.podcasts",
+        "category_id": null
+    },
+    {
+        "title": "TV",
+        "item_id": 21,
+        "storeid": null,
+        "moddate": 591419999.0,
+        "bundleid": "com.apple.TV",
+        "category_id": 4
+    },
+    {
+        "title": "Stocks",
+        "item_id": 22,
+        "storeid": null,
+        "moddate": 590842840.0,
+        "bundleid": "com.apple.stocks",
+        "category_id": null
+    },
+    {
+        "title": "Mail",
+        "item_id": 23,
+        "storeid": null,
+        "moddate": 591332789.0,
+        "bundleid": "com.apple.mail",
+        "category_id": 2
+    },
+    {
+        "title": "Dictionary",
+        "item_id": 24,
+        "storeid": null,
+        "moddate": 589532156.0,
+        "bundleid": "com.apple.Dictionary",
+        "category_id": 8
+    },
+    {
+        "title": "Contacts",
+        "item_id": 25,
+        "storeid": null,
+        "moddate": 590649822.0,
+        "bundleid": "com.apple.AddressBook",
+        "category_id": 2
+    },
+    {
+        "title": "Time Machine",
+        "item_id": 26,
+        "storeid": null,
+        "moddate": 588386132.0,
+        "bundleid": "com.apple.backup.launcher",
+        "category_id": 1
+    },
+    {
+        "title": "AirPort Utility",
+        "item_id": 27,
+        "storeid": null,
+        "moddate": 588390339.0,
+        "bundleid": "com.apple.airport.airportutility",
+        "category_id": 1
+    },
+    {
+        "title": "VoiceOver Utility",
+        "item_id": 28,
+        "storeid": null,
+        "moddate": 589873356.0,
+        "bundleid": "com.apple.VoiceOverUtility",
+        "category_id": 1
+    },
+    {
+        "title": "Terminal",
+        "item_id": 29,
+        "storeid": null,
+        "moddate": 589253477.0,
+        "bundleid": "com.apple.Terminal",
+        "category_id": 1
+    },
+    {
+        "title": "Activity Monitor",
+        "item_id": 30,
+        "storeid": null,
+        "moddate": 588912191.0,
+        "bundleid": "com.apple.ActivityMonitor",
+        "category_id": 1
+    },
+    {
+        "title": "Screenshot",
+        "item_id": 31,
+        "storeid": null,
+        "moddate": 588386105.0,
+        "bundleid": "com.apple.screenshot.launcher",
+        "category_id": 1
+    },
+    {
+        "title": "Grapher",
+        "item_id": 32,
+        "storeid": null,
+        "moddate": 588651121.0,
+        "bundleid": "com.apple.grapher",
+        "category_id": 7
+    },
+    {
+        "title": "Audio MIDI Setup",
+        "item_id": 33,
+        "storeid": null,
+        "moddate": 588386395.0,
+        "bundleid": "com.apple.audio.AudioMIDISetup",
+        "category_id": 1
+    },
+    {
+        "title": "System Information",
+        "item_id": 34,
+        "storeid": null,
+        "moddate": 588910042.0,
+        "bundleid": "com.apple.SystemProfiler",
+        "category_id": 1
+    },
+    {
+        "title": "Keychain Access",
+        "item_id": 35,
+        "storeid": null,
+        "moddate": 589783552.0,
+        "bundleid": "com.apple.keychainaccess",
+        "category_id": 1
+    },
+    {
+        "title": "Migration Assistant",
+        "item_id": 36,
+        "storeid": null,
+        "moddate": 588390851.0,
+        "bundleid": "com.apple.MigrateAssistant",
+        "category_id": 1
+    },
+    {
+        "title": "Script Editor",
+        "item_id": 37,
+        "storeid": null,
+        "moddate": 590388151.0,
+        "bundleid": "com.apple.ScriptEditor2",
+        "category_id": 1
+    },
+    {
+        "title": "ColorSync Utility",
+        "item_id": 38,
+        "storeid": null,
+        "moddate": 588389297.0,
+        "bundleid": "com.apple.ColorSyncUtility",
+        "category_id": 2
+    },
+    {
+        "title": "Console",
+        "item_id": 39,
+        "storeid": null,
+        "moddate": 588390494.0,
+        "bundleid": "com.apple.Console",
+        "category_id": 1
+    },
+    {
+        "title": "Disk Utility",
+        "item_id": 40,
+        "storeid": null,
+        "moddate": 591076567.0,
+        "bundleid": "com.apple.DiskUtility",
+        "category_id": null
+    },
+    {
+        "title": "Bluetooth File Exchange",
+        "item_id": 41,
+        "storeid": null,
+        "moddate": 590390907.0,
+        "bundleid": "com.apple.BluetoothFileExchange",
+        "category_id": 1
+    },
+    {
+        "title": "Boot Camp Assistant",
+        "item_id": 42,
+        "storeid": null,
+        "moddate": 591252912.0,
+        "bundleid": "com.apple.bootcampassistant",
+        "category_id": 1
+    },
+    {
+        "title": "Digital Colour Meter",
+        "item_id": 43,
+        "storeid": null,
+        "moddate": 588386702.0,
+        "bundleid": "com.apple.DigitalColorMeter",
+        "category_id": 2
+    },
+    {
+        "title": "Font Book",
+        "item_id": 44,
+        "storeid": null,
+        "moddate": 589258341.0,
+        "bundleid": "com.apple.FontBook",
+        "category_id": 1
+    },
+    {
+        "title": "FaceTime",
+        "item_id": 45,
+        "storeid": null,
+        "moddate": 589952492.0,
+        "bundleid": "com.apple.FaceTime",
+        "category_id": 9
+    },
+    {
+        "title": "Maps",
+        "item_id": 46,
+        "storeid": null,
+        "moddate": 588828675.0,
+        "bundleid": "com.apple.Maps",
+        "category_id": 10
+    },
+    {
+        "title": "Mission Control",
+        "item_id": 47,
+        "storeid": null,
+        "moddate": 588386125.0,
+        "bundleid": "com.apple.exposelauncher",
+        "category_id": 1
+    },
+    {
+        "title": "Stickies",
+        "item_id": 48,
+        "storeid": null,
+        "moddate": 588386524.0,
+        "bundleid": "com.apple.Stickies",
+        "category_id": 2
+    },
+    {
+        "title": "Photos",
+        "item_id": 49,
+        "storeid": null,
+        "moddate": 591167503.0,
+        "bundleid": "com.apple.Photos",
+        "category_id": 11
+    },
+    {
+        "title": "Messages",
+        "item_id": 50,
+        "storeid": null,
+        "moddate": 589788624.0,
+        "bundleid": "com.apple.iChat",
+        "category_id": 9
+    },
+    {
+        "title": "Calculator",
+        "item_id": 51,
+        "storeid": null,
+        "moddate": 588388017.0,
+        "bundleid": "com.apple.calculator",
+        "category_id": 1
+    },
+    {
+        "title": "Voice Memos",
+        "item_id": 52,
+        "storeid": null,
+        "moddate": 590472872.0,
+        "bundleid": "com.apple.VoiceMemos",
+        "category_id": null
+    },
+    {
+        "title": "Reminders",
+        "item_id": 54,
+        "storeid": null,
+        "moddate": 591331086.0,
+        "bundleid": "com.apple.reminders",
+        "category_id": null
+    },
+    {
+        "title": "App Store",
+        "item_id": 55,
+        "storeid": null,
+        "moddate": 590133976.0,
+        "bundleid": "com.apple.AppStore",
+        "category_id": 1
+    },
+    {
+        "title": "Automator",
+        "item_id": 56,
+        "storeid": null,
+        "moddate": 588921764.0,
+        "bundleid": "com.apple.Automator",
+        "category_id": 1
+    },
+    {
+        "title": "Calendar",
+        "item_id": 57,
+        "storeid": null,
+        "moddate": 588914617.0,
+        "bundleid": "com.apple.iCal",
+        "category_id": 2
+    },
+    {
+        "title": "System Preferences",
+        "item_id": 58,
+        "storeid": null,
+        "moddate": 590832499.0,
+        "bundleid": "com.apple.systempreferences",
+        "category_id": 1
+    },
+    {
+        "title": "Spark",
+        "item_id": 67,
+        "storeid": null,
+        "moddate": 604403508.030055,
+        "bundleid": "com.readdle.smartemail-Mac",
+        "category_id": 2
+    },
+    {
+        "title": "Telegram",
+        "item_id": 68,
+        "storeid": null,
+        "moddate": 603898956.617117,
+        "bundleid": "ru.keepcoder.Telegram",
+        "category_id": 9
+    },
+    {
+        "title": "Todoist",
+        "item_id": 69,
+        "storeid": null,
+        "moddate": 603188175.794778,
+        "bundleid": "com.todoist.mac.Todoist",
+        "category_id": 2
+    },
+    {
+        "title": "Trello",
+        "item_id": 71,
+        "storeid": null,
+        "moddate": 604403427.338907,
+        "bundleid": "com.atlassian.trello",
+        "category_id": 12
+    },
+    {
+        "title": "Microsoft To Do",
+        "item_id": 72,
+        "storeid": null,
+        "moddate": 604403387.401359,
+        "bundleid": "com.microsoft.to-do-mac",
+        "category_id": 2
+    },
+    {
+        "title": "iTerm",
+        "item_id": 73,
+        "storeid": null,
+        "moddate": 603293348.906396,
+        "bundleid": "com.googlecode.iterm2",
+        "category_id": 1
+    },
+    {
+        "title": "Google Chrome",
+        "item_id": 74,
+        "storeid": null,
+        "moddate": 604006294.0,
+        "bundleid": "com.google.Chrome",
+        "category_id": 2
+    },
+    {
+        "title": "Firefox",
+        "item_id": 75,
+        "storeid": null,
+        "moddate": 601560038.76311,
+        "bundleid": "org.mozilla.firefox",
+        "category_id": 2
+    },
+    {
+        "title": "Sublime Text",
+        "item_id": 76,
+        "storeid": null,
+        "moddate": 591582955.0,
+        "bundleid": "com.sublimetext.3",
+        "category_id": null
+    },
+    {
+        "title": "Sublime Merge",
+        "item_id": 77,
+        "storeid": null,
+        "moddate": 591576142.0,
+        "bundleid": "com.sublimemerge",
+        "category_id": null
+    },
+    {
+        "title": "Opera",
+        "item_id": 79,
+        "storeid": null,
+        "moddate": 604841404.581831,
+        "bundleid": "com.operasoftware.Opera",
+        "category_id": 2
+    },
+    {
+        "title": "Transmission",
+        "item_id": 80,
+        "storeid": null,
+        "moddate": 546888408.0,
+        "bundleid": "org.m0k.transmission",
+        "category_id": 1
+    },
+    {
+        "title": "pgAdmin 4",
+        "item_id": 81,
+        "storeid": null,
+        "moddate": 592902626.0,
+        "bundleid": "org.pgadmin.pgAdmin4",
+        "category_id": null
+    },
+    {
+        "title": "Docker",
+        "item_id": 82,
+        "storeid": null,
+        "moddate": 603187053.466026,
+        "bundleid": "com.docker.docker",
+        "category_id": 13
+    },
+    {
+        "title": "Visual Studio Code",
+        "item_id": 83,
+        "storeid": null,
+        "moddate": 596090312.0,
+        "bundleid": "com.microsoft.VSCode",
+        "category_id": 13
+    },
+    {
+        "title": "Things",
+        "item_id": 84,
+        "storeid": null,
+        "moddate": 600169160.0,
+        "bundleid": "com.culturedcode.ThingsMac",
+        "category_id": 2
+    },
+    {
+        "title": "Notion",
+        "item_id": 91,
+        "storeid": null,
+        "moddate": 602509180.0,
+        "bundleid": "notion.id",
+        "category_id": 2
+    },
+    {
+        "title": "Impactor",
+        "item_id": 92,
+        "storeid": null,
+        "moddate": 581319384.0,
+        "bundleid": "com.saurik.Impactor",
+        "category_id": 1
+    },
+    {
+        "title": "checkra1n",
+        "item_id": 93,
+        "storeid": null,
+        "moddate": 595083267.0,
+        "bundleid": "kim.cracksby.checkra1n",
+        "category_id": null
+    },
+    {
+        "title": "Twitter",
+        "item_id": 95,
+        "storeid": null,
+        "moddate": 604577439.994942,
+        "bundleid": "maccatalyst.com.atebits.Tweetie2",
+        "category_id": 14
+    },
+    {
+        "title": "Postman",
+        "item_id": 96,
+        "storeid": null,
+        "moddate": 604228738.0,
+        "bundleid": "com.postmanlabs.mac",
+        "category_id": 13
+    },
+    {
+        "title": "TeamViewer",
+        "item_id": 97,
+        "storeid": null,
+        "moddate": 592412017.0,
+        "bundleid": "com.teamviewer.TeamViewer",
+        "category_id": null
+    },
+    {
+        "title": "Sketch",
+        "item_id": 98,
+        "storeid": null,
+        "moddate": 598461079.0,
+        "bundleid": "com.bohemiancoding.sketch3",
+        "category_id": 15
+    },
+    {
+        "title": "Audacity",
+        "item_id": 100,
+        "storeid": null,
+        "moddate": 578669269.0,
+        "bundleid": "org.audacityteam.audacity",
+        "category_id": null
+    },
+    {
+        "title": "Install macOS Catalina",
+        "item_id": 101,
+        "storeid": null,
+        "moddate": 596884928.675782,
+        "bundleid": "com.apple.InstallAssistant.Catalina",
+        "category_id": 1
+    },
+    {
+        "title": "LibreOffice",
+        "item_id": 107,
+        "storeid": null,
+        "moddate": 593553542.0,
+        "bundleid": "org.libreoffice.script",
+        "category_id": 2
+    },
+    {
+        "title": "Charles",
+        "item_id": 110,
+        "storeid": null,
+        "moddate": 528433706.0,
+        "bundleid": "com.xk72.Charles",
+        "category_id": 13
+    },
+    {
+        "title": "Keka",
+        "item_id": 112,
+        "storeid": null,
+        "moddate": 597417145.0,
+        "bundleid": "com.aone.keka",
+        "category_id": 1
+    },
+    {
+        "title": "FSNotes",
+        "item_id": 115,
+        "storeid": null,
+        "moddate": 600293372.0,
+        "bundleid": "co.fluder.FSNotes",
+        "category_id": 2
+    },
+    {
+        "title": "VPN Proxy Master",
+        "item_id": 119,
+        "storeid": null,
+        "moddate": 600778579.614137,
+        "bundleid": "co.jialeisun.vpnmaster",
+        "category_id": 1
+    },
+    {
+        "title": "Bear",
+        "item_id": 121,
+        "storeid": null,
+        "moddate": 603898967.78411,
+        "bundleid": "net.shinyfrog.bear",
+        "category_id": 2
+    },
+    {
+        "title": "Ulysses",
+        "item_id": 123,
+        "storeid": null,
+        "moddate": 600876751.45464,
+        "bundleid": "com.ulyssesapp.mac",
+        "category_id": 2
+    },
+    {
+        "title": "iA Writer",
+        "item_id": 124,
+        "storeid": null,
+        "moddate": 599772860.0,
+        "bundleid": "pro.writer.mac",
+        "category_id": 2
+    },
+    {
+        "title": "Hopper Disassembler v4",
+        "item_id": 125,
+        "storeid": null,
+        "moddate": 502114770.0,
+        "bundleid": "com.cryptic-apps.hopper-web-4",
+        "category_id": 13
+    },
+    {
+        "title": "Thunderbird",
+        "item_id": 126,
+        "storeid": null,
+        "moddate": 601484705.0,
+        "bundleid": "org.mozilla.thunderbird",
+        "category_id": 2
+    },
+    {
+        "title": "Microsoft OneNote",
+        "item_id": 127,
+        "storeid": null,
+        "moddate": 603184307.477,
+        "bundleid": "com.microsoft.onenote.mac",
+        "category_id": 2
+    },
+    {
+        "title": "Microsoft Outlook",
+        "item_id": 128,
+        "storeid": null,
+        "moddate": 603184280.14842,
+        "bundleid": "com.microsoft.Outlook",
+        "category_id": 2
+    },
+    {
+        "title": "OneDrive",
+        "item_id": 129,
+        "storeid": null,
+        "moddate": 604492077.839429,
+        "bundleid": "com.microsoft.OneDrive",
+        "category_id": 2
+    },
+    {
+        "title": "Microsoft Excel",
+        "item_id": 131,
+        "storeid": null,
+        "moddate": 603184333.556191,
+        "bundleid": "com.microsoft.Excel",
+        "category_id": 2
+    },
+    {
+        "title": "Microsoft Word",
+        "item_id": 132,
+        "storeid": null,
+        "moddate": 603184249.707016,
+        "bundleid": "com.microsoft.Word",
+        "category_id": 2
+    },
+    {
+        "title": "Microsoft PowerPoint",
+        "item_id": 133,
+        "storeid": null,
+        "moddate": 603184223.738189,
+        "bundleid": "com.microsoft.Powerpoint",
+        "category_id": 2
+    },
+    {
+        "title": "Skype",
+        "item_id": 136,
+        "storeid": null,
+        "moddate": 601578776.0,
+        "bundleid": "com.skype.skype",
+        "category_id": 9
+    },
+    {
+        "title": "Jami",
+        "item_id": 139,
+        "storeid": null,
+        "moddate": 603740327.152052,
+        "bundleid": "com.savoirfairelinux.ring.macos",
+        "category_id": 9
+    },
+    {
+        "title": "Kap",
+        "item_id": 140,
+        "storeid": null,
+        "moddate": 603658925.0,
+        "bundleid": "com.wulkano.kap",
+        "category_id": 2
+    }
+]

@@ -1,0 +1,34 @@
+[
+    {
+        "last_fsevent_id": 80966073,
+        "rowid": 1,
+        "flags": 0,
+        "uuid": "read only system",
+        "bookmark": null,
+        "fsevent_uuid": "3DB8BAEA-93E0-4DC2-B31D-FE73C8C84D90"
+    },
+    {
+        "last_fsevent_id": 13355587,
+        "rowid": 2,
+        "flags": 0,
+        "uuid": "system",
+        "bookmark": null,
+        "fsevent_uuid": "95BCFABF-DC33-4E5C-98CC-308FD326E6CF"
+    },
+    {
+        "last_fsevent_id": 13355587,
+        "rowid": 3,
+        "flags": 0,
+        "uuid": "user",
+        "bookmark": null,
+        "fsevent_uuid": "95BCFABF-DC33-4E5C-98CC-308FD326E6CF"
+    },
+    {
+        "last_fsevent_id": -1,
+        "rowid": 4,
+        "flags": 0,
+        "uuid": "internal",
+        "bookmark": null,
+        "fsevent_uuid": null
+    }
+]

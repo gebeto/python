@@ -1,0 +1,66 @@
+[
+    {
+        "uti": "public.app-category.utilities",
+        "rowid": 1
+    },
+    {
+        "uti": "public.app-category.productivity",
+        "rowid": 2
+    },
+    {
+        "uti": "public.app-category.music",
+        "rowid": 3
+    },
+    {
+        "uti": "public.app-category.video",
+        "rowid": 4
+    },
+    {
+        "uti": "public.app-category.board-games",
+        "rowid": 5
+    },
+    {
+        "uti": "public.app-category.entertainment",
+        "rowid": 6
+    },
+    {
+        "uti": "public.app-category.education",
+        "rowid": 7
+    },
+    {
+        "uti": "public.app-category.reference",
+        "rowid": 8
+    },
+    {
+        "uti": "public.app-category.social-networking",
+        "rowid": 9
+    },
+    {
+        "uti": "public.app-category.travel",
+        "rowid": 10
+    },
+    {
+        "uti": "public.app-category.photography",
+        "rowid": 11
+    },
+    {
+        "uti": "public.app-category.business",
+        "rowid": 12
+    },
+    {
+        "uti": "public.app-category.developer-tools",
+        "rowid": 13
+    },
+    {
+        "uti": "public.app-category.news",
+        "rowid": 14
+    },
+    {
+        "uti": "public.app-category.graphics-design",
+        "rowid": 15
+    },
+    {
+        "uti": "public.app-category.games",
+        "rowid": 16
+    }
+]

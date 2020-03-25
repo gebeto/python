@@ -1,62 +1,121 @@
-from sqlalchemy import Column, Integer, String, create_engine, REAL, BLOB
+from sqlalchemy import Column, create_engine, REAL, BLOB, VARCHAR, INTEGER
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
+import json
 import os
 
 url_root = os.popen("getconf DARWIN_USER_DIR").read().strip()
 url = os.path.join(url_root, "com.apple.dock.launchpad", "db", "db")
 print(" >>>", url)
-# exit()
 engine = create_engine(f"sqlite:///{url}")
-# engine = create_engine(url)
 factory = sessionmaker()
 factory.configure(bind=engine)
 session = factory()
 
-print(session)
-
 Base = declarative_base()
 
-class Apps(Base):
+
+def as_dict(item):
+	return {k: v for k, v in item.__dict__.items() if k[0].isalpha() and type(v) != bytes}
+
+
+setattr(Base, "as_dict", as_dict)
+
+# class Base(Baseb):
+# 	def as_dict(item):
+# 		print(item)
+
+
+class App(Base):
 	__tablename__ = 'apps'
-	item_id = Column(Integer, primary_key=True)
-	title = Column(String())
-	bundleid = Column(String())
-	storeid = Column(String())
-	category_id = Column(Integer)
+	item_id = Column(INTEGER, primary_key=True)
+	title = Column(VARCHAR)
+	bundleid = Column(VARCHAR)
+	storeid = Column(VARCHAR)
+	category_id = Column(INTEGER)
 	moddate = Column(REAL)
 	bookmark = Column(BLOB)
 
 	def __repr__(app):
 		return f"App({app.item_id}, '{app.title}', '{app.bundleid}')"
 
+
+class Item(Base):
+	__tablename__ = 'items'
+	rowid = Column(INTEGER, primary_key=True)
+	uuid = Column(VARCHAR)
+	flags = Column(INTEGER)
+	type = Column(INTEGER)
+	parent_id = Column(INTEGER, nullable=False)
+	ordering = Column(INTEGER)
+
+	def __repr__(item):
+		return f"Item({item.rowid}, '{item.uuid}', '{item.parent_id}')"
+
+
+class Group(Base):
+	__tablename__ = 'groups'
+	item_id = Column(INTEGER, primary_key=True)
+	category_id = Column(INTEGER)
+	title = Column(VARCHAR)
+
+	def __repr__(group):
+		return f"Group({group.item_id}, '{group.category_id}', '{group.title}')"
+
+
 class DBInfo(Base):
 	__tablename__ = 'dbinfo'
-	key = Column(String())
-	value = Column(String())
+	key = Column(VARCHAR, primary_key=True)
+	value = Column(VARCHAR)
 
-# class ImageCache(Base):
-# 	__tablename__ = 'image_cache'
-# 	item_id = Column(Integer)
-# 	size_big = Column(Integer)
-# 	size_mini = Column(Integer)
-# 	image_data = Column(BLOB)
-# 	image_data_mini = Column(BLOB)
+	def __repr__(info):
+		return f"DBInfo('{info.key}', '{info.value}')"
 
 
-# CREATE TABLE dbinfo (key VARCHAR, value VARCHAR);
-# CREATE TABLE items (rowid INTEGER PRIMARY KEY ASC, uuid VARCHAR, flags INTEGER, type INTEGER, parent_id INTEGER NOT NULL, ordering INTEGER);
-# CREATE TABLE groups (item_id INTEGER PRIMARY KEY, category_id INTEGER, title VARCHAR);
-# CREATE TABLE downloading_apps (item_id INTEGER PRIMARY KEY, title VARCHAR, bundleid VARCHAR, storeid VARCHAR, category_id INTEGER, install_path VARCHAR);
-# CREATE TABLE categories (rowid INTEGER PRIMARY KEY ASC, uti VARCHAR);
-# CREATE TABLE app_sources (rowid INTEGER PRIMARY KEY ASC, uuid VARCHAR, flags INTEGER, bookmark BLOB, last_fsevent_id INTEGER, fsevent_uuid VARCHAR);
-# CREATE TABLE image_cache (item_id INTEGER, size_big INTEGER, size_mini INTEGER, image_data BLOB, image_data_mini BLOB);
+class ImageCache(Base):
+	__tablename__ = 'image_cache'
+	item_id = Column(INTEGER, primary_key=True)
+	size_big = Column(INTEGER)
+	size_mini = Column(INTEGER)
+	image_data = Column(BLOB)
+	image_data_mini = Column(BLOB)
+
+	def __repr__(img_cache):
+		return f"ImageCache({img_cache.item_id}, {img_cache.size_big}, {img_cache.size_mini}, ...)"
 
 
-# apps = session.query(Apps).all()
-# print(apps)
-# print(apps[0].bookmark)
+class DownloadingApp(Base):
+	__tablename__ = 'downloading_apps'
+	item_id = Column(INTEGER, primary_key=True)
+	title = Column(VARCHAR)
+	bundleid = Column(VARCHAR)
+	storeid = Column(VARCHAR)
+	category_id = Column(INTEGER)
+	install_path = Column(VARCHAR)
 
-# images = session.query(ImageCache).all()
-# print(images)
+	def __repr__(app):
+		return f"DownloadingApp({app.item_id}, '{app.title}', '{app.bundleid}', '{app.storeid}', ...)"
+
+
+class Category(Base):
+	__tablename__ = 'categories'
+	rowid = Column(INTEGER, primary_key=True)
+	uti = Column(VARCHAR)
+
+	def __repr__(category):
+		return f"Category({category.rowid}, '{category.uti}')"
+
+
+class AppSource(Base):
+	__tablename__ = 'app_sources'
+	rowid = Column(INTEGER, primary_key=True)
+	uuid = Column(VARCHAR)
+	flags = Column(INTEGER)
+	bookmark = Column(BLOB)
+	last_fsevent_id = Column(INTEGER)
+	fsevent_uuid = Column(VARCHAR)
+
+	def __repr__(source):
+		return f"AppSource({source.rowid}, '{source.uuid}', ...)"
+
