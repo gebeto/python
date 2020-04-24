@@ -50,6 +50,7 @@ def start(message):
 	save_data(data)
 	print(f"Work is started at {now.strftime('%d/%m/%y | %H:%M')}")
 
+
 def done(message):
 	data = get_data()
 	if not message:
@@ -61,6 +62,7 @@ def done(message):
 		"message": message,
 	})
 	save_data(data)
+
 
 def end(args):
 	data = get_data()
