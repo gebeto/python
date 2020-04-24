@@ -4,8 +4,11 @@ import sys
 import os
 from datetime import datetime
 
-script, action, *message_raw = sys.argv
-message = " ".join(message_raw)
+if len(sys.argv) > 1:
+	script, action, *message_raw = sys.argv
+	message = " ".join(message_raw)
+else:
+	exit(0)
 
 # print(script, action, message)
 
@@ -41,9 +44,11 @@ def save_data(data):
 
 def start(message):
 	data = get_data()
-	data["start_time"] = str(datetime.now().isoformat())
+	now = datetime.now()
+	data["start_time"] = str(now.isoformat())
 	data["items"] = []
 	save_data(data)
+	print(f"Work is started at {now.strftime('%d/%m/%y | %H:%M')}")
 
 def done(message):
 	data = get_data()
