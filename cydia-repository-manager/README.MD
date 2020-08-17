@@ -1,3 +1,3 @@
 ### Cydia Repository Manager
 
-![alt tag](https://github.com/bboyheadman/Cydia-repository-manager/blob/master/screenshots/1.png)
+![Screenshot](https://github.com/gebeto/python/blob/master/cydia-repository-manager/screenshots/1.png)
