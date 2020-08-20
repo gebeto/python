@@ -4,6 +4,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quia natus volupt
 
 <details>
 	<summary>More</summary>
-	{% capture readme %}{% include_relative silence-bot/README.md %}{% endcapture %}
+	{% capture readme %}{% include_relative ./README.md %}{% endcapture %}
 	{{ readme | markdownify }}
 </details>
