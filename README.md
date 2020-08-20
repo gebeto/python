@@ -6,8 +6,12 @@ My set of small python projects
 
 - [Silence Bot](silence-bot)
 
+<ul>
+  <li>
 <details>
-  <summary>Silence Bot</summary>
+  <summary><a href="silence-bot">Silence Bot</a></summary>
   
   {% include_relative silence-bot/README.md %}
 </details>
+  </li>
+</ul>
