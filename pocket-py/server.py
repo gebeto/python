@@ -27,6 +27,10 @@ async def auth_authorize(code):
 	})
 
 
+async def handle_index(request):
+	return web.FileResponse("./static/index.html")
+
+
 async def handle_auth(request):
 	name = request.match_info.get('name', "Anonymous")
 	auth = await auth_request()
@@ -45,6 +49,9 @@ async def handle_redirect(request):
 
 app = web.Application()
 app.add_routes([
+	web.get('/', handle_index),
+	web.static('/static', './static'),
+	
 	web.get('/auth', handle_auth),
 	web.get('/redirect/{code}', handle_redirect),
 ])
