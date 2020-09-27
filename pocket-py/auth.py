@@ -1,18 +1,17 @@
 from aiohttp import web, ClientSession
 import json
 
+from req import post_request, consumer_key
 
-consumer_key = "93469-2d3aed9244846a9aa468dbcf"
+
 redirect_uri = "http://localhost:8080/redirect"
 
 
-async def post_request(url, json_data):
-	async with ClientSession(json_serialize=json.dumps) as session:
-		async with session.post(url, json=json_data, headers={"X-Accept": "application/json"}) as response:
-			if response.status != 200:
-				return None
-			resp = await response.json()
-	return resp
+def get_auth_data():
+	return json.load(open("auth.json"))
+
+def set_auth_data(auth):
+	json.dump(auth, open("auth.json", "w"), indent=4)
 
 
 async def auth_request():
@@ -41,6 +40,7 @@ async def handle_redirect(request):
 	auth = await auth_authorize(code)
 	if auth is None:
 		return web.HTTPFound(location="/auth")
+	set_auth_data(auth)
 	return web.json_response(auth)
 
 app = web.Application()
