@@ -1,0 +1,36 @@
+
+a.out:	file format Mach-O 64-bit x86-64
+
+
+Disassembly of section __TEXT,__text:
+
+0000000100000f50 _main:
+100000f50: 55                          	pushq	%rbp
+100000f51: 48 89 e5                    	movq	%rsp, %rbp
+100000f54: 48 83 ec 10                 	subq	$16, %rsp
+100000f58: c7 45 fc 00 00 00 00        	movl	$0, -4(%rbp)
+100000f5f: c7 45 f8 00 00 00 00        	movl	$0, -8(%rbp)
+100000f66: 83 7d f8 00                 	cmpl	$0, -8(%rbp)
+100000f6a: 0f 8e 0e 00 00 00           	jle	14 <_main+0x2e>
+100000f70: 48 8d 3d 2f 00 00 00        	leaq	47(%rip), %rdi
+100000f77: b0 00                       	movb	$0, %al
+100000f79: e8 08 00 00 00              	callq	8 <dyld_stub_binder+0x100000f86>
+100000f7e: 31 c0                       	xorl	%eax, %eax
+100000f80: 48 83 c4 10                 	addq	$16, %rsp
+100000f84: 5d                          	popq	%rbp
+100000f85: c3                          	retq
+
+Disassembly of section __TEXT,__stubs:
+
+0000000100000f86 __stubs:
+100000f86: ff 25 74 10 00 00           	jmpq	*4212(%rip)
+
+Disassembly of section __TEXT,__stub_helper:
+
+0000000100000f8c __stub_helper:
+100000f8c: 4c 8d 1d 75 10 00 00        	leaq	4213(%rip), %r11
+100000f93: 41 53                       	pushq	%r11
+100000f95: ff 25 65 00 00 00           	jmpq	*101(%rip)
+100000f9b: 90                          	nop
+100000f9c: 68 00 00 00 00              	pushq	$0
+100000fa1: e9 e6 ff ff ff              	jmp	-26 <__stub_helper>
