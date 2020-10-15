@@ -3,11 +3,10 @@ import requests
 
 
 headers = {
-    "Accept-Language": "ru",
+	# "Accept-Language": "ru",
+	"Accept-Language": "ru",
 	"User-Agent": "AppStore/2.0 iOS/10.2 model/iPhone6,1 hwp/s5l8960x build/14C92 (6; dt:89)",
 	# "X-Apple-Store-Front": countries['ru'],
-
-
 	# 'X-Apple-I-MD-RINFO': '17106176' ,
 	'Accept': '*/*' ,
 	'X-Apple-Store-Front': '143469-2,29' ,
@@ -17,9 +16,10 @@ headers = {
 	# 'X-Apple-Connection-Type': '3G/UA-KYIVSTAR' ,
 	# 'X-Apple-I-Client-Time': '2018-11-10T16:31:29Z' ,
 	# 'X-Apple-I-MD': 'AAAABQAAABCf4tdNdE23mg0bZEIIxZnfAAAAAw==' ,
-	'User-Agent': 'AppStore/2.0 iOS/10.2 model/iPhone6,1 hwp/s5l8960x build/14C92 (6; dt:89)' ,
+	'User-Agent': 'AppStore/2.0 iOS/10.2 model/iPhone6,1 hwp/s5l8960x build/14C92 (6; dt:89)',
 	# 'X-Dsid': '1915677827',
 }
+
 
 def search(keyword, country = 'ru'):
 	countries = {
@@ -28,8 +28,9 @@ def search(keyword, country = 'ru'):
 	}
 	search_url = "https://search.itunes.apple.com/WebObjects/MZStore.woa/wa/search?clientApplication=Software&term={}&caller=com.apple.AppStore&version=1"
 	res = requests.get(search_url.format(keyword), headers=headers).json()
-	items = res['storePlatformData']['native-search-lockup']['results'].values()
+	items = res['storePlatformData']['native-search-lockup']['results']
 	return items
+
 
 def top():
 	top_url = "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=ru&genreId=36&l=en"
@@ -37,11 +38,14 @@ def top():
 	items = res['storePlatformData']['lockup']['results'].values()
 	return items
 
+
 def app(ID):
 	lookup_url = "https://itunes.apple.com/ru/app/hidden-folks/id{}?l=en&mt=8'"
 	res = requests.get(lookup_url.format(ID), headers=headers).json()
-	items = res['storePlatformData']['product-dv']['results'].values()
-	return items[0]
+	# items = res['storePlatformData']['product-dv']['results'].values()
+	items = res['storePlatformData']['product-dv']['results']
+	return items
+
 
 def categories():
 	url = "https://itunes.apple.com/WebObjects/MZStore.woa/wa/categories?cc=ru&genreId=36&l=en"
@@ -49,15 +53,23 @@ def categories():
 	items = res['categories']
 	return items
 
+
 def category_apps(genreId):
 	url = "https://itunes.apple.com/ru/genre/ios-photo-video/id{}?l=en&mt=8"
 	res = requests.get(url.format(genreId), headers=headers).json()
 	items = res['storePlatformData']['lockup']['results'].values()
-	print len(items)
+	print(len(items))
 	return items
 
 
+
 # ap = app('1133544923')
-ap = category_apps(6008) # Photos
+# ap = category_apps(6008) # Photos
 # print ap
-json.dump(ap, open('t.json', 'w'), indent=4)
+# json.dump(ap, open('t.json', 'w'), indent=4)
+
+
+# res = app('686449807')
+res = search('Telegram')
+print(res)
+json.dump(res, open('t.json', 'w'), indent=4)
