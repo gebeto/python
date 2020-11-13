@@ -3,4 +3,7 @@
 My set of small python projects
 
 ## Projects
-- [Silence Bot](silence-bot)
+
+{% include_relative silence-bot/README-SHORT.md %}
+
+{% include_relative silence-bot/README-SHORT.md %}
