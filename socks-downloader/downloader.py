@@ -1,9 +1,10 @@
+import re
+import os
+import sys
 import base64
 import requests
-import sys
 from bs4 import BeautifulSoup
-import re
-from base64 import b64decode
+
 
 extract_base64 = re.compile(r".decode\(\"(.+)\"")
 
@@ -11,19 +12,23 @@ extract_base64 = re.compile(r".decode\(\"(.+)\"")
 class FreeProxy():
   def __init__(self, row):
     self._tds = row.find_all("td")
+    self._ths = row.find_all("th")
   
   @property
-  def ip(self):
-    td = self._tds[0]
-    tdval = extract_base64.search(str(td))
-    if not td or not tdval:
+  def ping(self):
+    if not self._tds[2].text:
       return None
-    tdb, = tdval.groups(0)
-    return base64.b64decode(tdb).decode("utf-8")
+    return int(self._tds[2].text.strip())
+
+  @property
+  def ip(self):
+    if not self._ths[0].text:
+      return None
+    return self._ths[0].text.strip()
   
   @property
   def port(self):
-    td = self._tds[1]
+    td = self._tds[0]
     if not td:
       return None
     return td.text
@@ -38,7 +43,7 @@ class FreeProxy():
   @property
   def url(self):
     return f"socks5://{self.ip}:{self.port}"
-  
+
   def __repr__(self):
     return self.url
   
@@ -56,28 +61,33 @@ class FreeProxy():
 
 
 def get_socks_proxy():
-  purl = "https://free-proxy.cz/en/proxylist/country/all/socks5/ping/level1"
-  response = requests.get(purl, headers={
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36",
-    "Cookie": "__gads=ID=e045919762c138b3-22a0ca503ccc0030:T=1637618439:RT=1638618439:S=ALNI_MYlihe_3WKPqWdjKe6__HE4ORPWPf; fp=03321fa4062e49f53ed748995a66ee72; __utmc=104525398; __utmz=104525398.1638618441.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmt=1; __utma=104525398.1261048631.1638618438.1638618439.1638626138.2; __utmb=104525398.6.10.1638626141",
+  # purl = "https://free-proxy.cz/en/proxylist/country/all/socks5/ping/level1"
+  purl = "https://www.proxyscan.io/Home/FilterResult"
+  response = requests.post(purl, data={
+    "status": 1,
+    "selectedType": "SOCKS5",
+    "sortPing": False,
+    "sortTime": True,
+    "sortUptime": False,
   })
   soup = BeautifulSoup(response.text, "html.parser")
-  table = soup.find('table', {'id': 'proxy_list'}).find("tbody")
   result = []
-  for row in table.children:
+  for row in soup.find_all('tr'):
     prox = FreeProxy(row)
     if not prox.ip:
       continue
     result.append(prox)
-  return result
+  return sorted(result, key=lambda x: x.ping)
 
 def download_file(url, filename, proxies=[]):
   proxy = proxies.pop(0)
   while len(proxies) > 0:
+    print(proxy.ping)
     try:
       print(proxy)
       res = requests.head("https://vk.com/", proxies=proxy.proxies, timeout=4)
-      if res.status_code == 200:
+      print(res)
+      if res.status_code in [200, 418]:
         break
     except Exception as ex:
       print(ex)
@@ -89,7 +99,7 @@ def download_file(url, filename, proxies=[]):
   resp.raise_for_status()
   file_size = int(resp.headers.get("Content-Length"))
 
-  with open(filename, "wb") as f:
+  with open(os.path.join("/Users/gebeto/Desktop", filename), "wb") as f:
     progress = 0
     for chunk in resp.iter_content(chunk_size=8192):
       progress += len(chunk)
@@ -98,6 +108,12 @@ def download_file(url, filename, proxies=[]):
       f.write(chunk)
     sys.stdout.write(f"\r\nDone!\n")
 
-proxies = get_socks_proxy()
-script, url, filename = sys.argv
-download_file(url, filename, proxies=proxies)
+
+def download(url, filename):
+  proxies = get_socks_proxy()
+  download_file(url, filename, proxies=proxies)
+
+
+if __name__ == "__main__":
+  script, url, filename = sys.argv
+  download(url, filename)
